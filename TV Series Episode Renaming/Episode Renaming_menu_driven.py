@@ -83,7 +83,7 @@ class rename_files:
         except UserWarning:
             _ = input("Done")
         except Exception as e:
-            print(e)
+            print(f'remove_dots :- {e}')
             raise UserWarning
 
     def remove_specific_word(self):
@@ -130,7 +130,7 @@ class rename_files:
         except UserWarning:
             _ = input("Done")
         except Exception as e:
-            print(e)
+            print(f'remove_specific_word :- {e}')
             raise UserWarning
 
     def rename_files_as_specified(self) :
@@ -184,7 +184,7 @@ class rename_files:
         except UserWarning :
             _ = input('done')
         except Exception as e :
-            #print (e)
+            print(f'rename_files_as_specified :- {e}')
             raise UserWarning
 
     def add_extension(self):
@@ -211,13 +211,13 @@ class rename_files:
         except UserWarning:
             _ = input("Done")
         except Exception as e:
-            print(e)
+            print(f'add_extension :- {e}')
             raise UserWarning
 
     def add_keyword_at_end(self):
         keyword = str(input('Keyword : '))
         try:
-            for item in path.glob("*"):
+            for item in self.path.glob("*"):
                 src = str(item)
                 path_list = str(item).split("\\")
                 file_name = path_list[-1]
@@ -243,13 +243,13 @@ class rename_files:
         except UserWarning:
             _ = input("Done")
         except Exception as e:
-            print(e)
+            print(f'add_keyword_at_end :- {e}')
             raise UserWarning
 
     def add_keyword_at_front(self):
         keyword = str(input('Keyword : '))
         try:
-            for item in path.glob("*"):
+            for item in self.path.glob("*"):
                 src = str(item)
                 path_list = str(item).split("\\")
                 file_name = path_list[-1]
@@ -270,20 +270,20 @@ class rename_files:
         except UserWarning:
             _ = input("Done")
         except Exception as e:
-            print(e)
+            print(f'add_keyword_at_end :- {e}')
             raise UserWarning
 
     def list_file(self) :
         try:
-            for item in path.glob("*"):
+            for item in self.path.glob("*"):
                 src = str(item)
                 path_list = str(item).split("\\")
                 file_name = path_list[-1]
                 if file_name.__contains__(".py"):
                     continue
                 print(file_name)
-        except Exception :
-            pass
+        except Exception as e:
+            print(f'list_files :- {e}')
 
 
 class_call_rename_files = rename_files()
