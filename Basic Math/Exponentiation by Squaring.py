@@ -4,9 +4,9 @@ def exp( number, power):
     if ( power % 2 == 0 ):
         return exp( number * number, power // 2 )
     return number * exp( number * number, power // 2 )
-number = 2
-power = 5
-print (exp(number,power))
+number = int(input("Number : "))
+power = int(input("power : "))
+print (f"Answer : {exp(number,power)}")
 
 
 """
