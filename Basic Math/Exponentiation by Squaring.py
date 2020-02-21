@@ -8,7 +8,8 @@ number = int(input("Number : "))
 power = int(input("power : "))
 print (f"Answer : {exp(number,power)}")
 
-
+_ = input()
 """
 find power of a number in a efficient method
 """
+

@@ -17,3 +17,5 @@ pos = 1000
 print (fib_at(pos))
 
 #print(fib_dic)
+
+_ = input()

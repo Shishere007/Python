@@ -9,3 +9,5 @@ def exp( number, power):
 number = int(input("Number : "))
 power = int(input("power : "))
 print (f"Ans : {exp(number,power)}")
+
+_ = input()
