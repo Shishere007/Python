@@ -115,6 +115,7 @@ class Single_Linked_List:
             prev_node.prev = prev_node
 
     def traverse(self) -> None:
+        # print(f"[{self.__head}]")
         if not self.__is_empty():
             nodes = []
             # print(self.__head)
