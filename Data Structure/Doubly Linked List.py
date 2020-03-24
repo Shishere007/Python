@@ -53,6 +53,9 @@ class Doubly_Linked_List:
         new_node.prev = last_node
 
     def insert_after_node(self, data: str, after: str) -> None:
+        '''
+        Return after a speicif node
+        '''
         if self.__head == None:
             self.__add___head(data=data)
             return
