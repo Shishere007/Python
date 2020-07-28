@@ -2,13 +2,13 @@ from os import getcwd, rename
 from pathlib import Path
 from time import sleep
 
-path = Path(getcwd())
+
 def main():
-    
+    path = Path(getcwd())
     print(f"current path {path}")
     _ = str(input("Press any key to continue"))
 
-    extension = str(input('Extension : '))
+    #extension = str(input('Extension : '))
     try:
         for item in path.glob("*"):
             src = str(item)
@@ -18,7 +18,7 @@ def main():
                 continue
             print(file_name)
             # extension to be added
-            file_name = file_name + extension
+            file_name = file_name.replace(" ","_")
             path_list.pop(-1)
             path_list.append(file_name)
             print(file_name)

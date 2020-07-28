@@ -119,7 +119,7 @@ class Doubly_Linked_List:
                 last_node = last_node.next
             print(nodes)
 
-    def get_list(self):
+    def get_list(self) -> node:
         return self.__head
 
 

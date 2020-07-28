@@ -3,8 +3,7 @@ from pathlib import Path
 from time import sleep
 
 
-
-# a menu driven program to rename bulk files like 
+# a menu driven program to rename bulk files like
 # series episodes at once
 
 
@@ -37,15 +36,15 @@ class rename_files:
                 self.remove_specific_word()
             elif choice == 3:
                 self.rename_files_as_specified()
-            elif choice == 4 :
+            elif choice == 4:
                 self.list_file()
-            elif choice == 5 :
+            elif choice == 5:
                 self.add_keyword_at_front()
-            elif choice == 6 :
+            elif choice == 6:
                 self.add_keyword_at_end()
-            elif choice == 7 :
+            elif choice == 7:
                 self.add_extension()
-            elif choice == 8 :
+            elif choice == 8:
                 quit(0)
             else:
                 raise UserWarning
@@ -69,7 +68,10 @@ class rename_files:
                 # no of dots
                 dot_count = file_name.count(".")
                 # replace n-1 dots in the file name with space
-                new_file_name = file_name.replace(".", " ", dot_count - 1)
+                if item.is_dir():
+                    new_file_name = file_name.replace(".", " ")
+                else:
+                    new_file_name = file_name.replace(".", " ", dot_count - 1)
                 # remove the old file name
                 path_list.pop(-1)
                 # append new file name
@@ -83,7 +85,7 @@ class rename_files:
         except UserWarning:
             _ = input("Done")
         except Exception as e:
-            print(f'remove_dots :- {e}')
+            print(f"remove_dots :- {e}")
             raise UserWarning
 
     def remove_specific_word(self):
@@ -130,10 +132,10 @@ class rename_files:
         except UserWarning:
             _ = input("Done")
         except Exception as e:
-            print(f'remove_specific_word :- {e}')
+            print(f"remove_specific_word :- {e}")
             raise UserWarning
 
-    def rename_files_as_specified(self) :
+    def rename_files_as_specified(self):
         print(
             """
             Give the filename in the following format
@@ -142,53 +144,52 @@ class rename_files:
         )
         new_file_name = str(input("Filename : "))
         new_file_name_list = new_file_name.split()
-        try :
-            episode = int(input('Starting Episode : '))
-            
-            try :
-                for item in self.path.glob('*'):
+        try:
+            episode = int(input("Starting Episode : "))
+
+            try:
+                for item in self.path.glob("*"):
                     src = str(item)
-                    if src.__contains__('.py') :
+                    if src.__contains__(".py"):
                         continue
                     path_list = str(item).split("\\")
                     current_file_name = path_list[-1]
-                    print (current_file_name)
+                    print(current_file_name)
                     file_extension = current_file_name.split()[-1]
-                    file_extension_list = file_extension.split('.')
+                    file_extension_list = file_extension.split(".")
 
-                    
                     temp_list = []
                     temp_list.append(str(new_file_name))
-                    if episode < 10 :
-                        temp_list.append((str(0)+str(episode)))
-                    else :
+                    if episode < 10:
+                        temp_list.append((str(0) + str(episode)))
+                    else:
                         temp_list.append(str(episode))
-                    temp_list.append('.' + file_extension_list[-1])  
+                    temp_list.append("." + file_extension_list[-1])
                     current_file_new_name = "".join(temp_list)
-                    #print (temp_list)
+                    # print (temp_list)
                     episode += 1
 
                     path_list.pop(-1)
                     path_list.append(current_file_new_name)
-                    print (current_file_new_name)
+                    print(current_file_new_name)
                     dst = "\\".join(path_list)
                     # to rename the file
-                    rename(src,dst)
-                    #break
-                else :
+                    rename(src, dst)
+                    # break
+                else:
                     raise UserWarning
-            except Exception as e :
-                #print (e)
+            except Exception as e:
+                # print (e)
                 raise UserWarning
-                
-        except UserWarning :
-            _ = input('done')
-        except Exception as e :
-            print(f'rename_files_as_specified :- {e}')
+
+        except UserWarning:
+            _ = input("done")
+        except Exception as e:
+            print(f"rename_files_as_specified :- {e}")
             raise UserWarning
 
     def add_extension(self):
-        extension = str(input('Extension : '))
+        extension = str(input("Extension : "))
         try:
             for item in path.glob("*"):
                 src = str(item)
@@ -211,11 +212,11 @@ class rename_files:
         except UserWarning:
             _ = input("Done")
         except Exception as e:
-            print(f'add_extension :- {e}')
+            print(f"add_extension :- {e}")
             raise UserWarning
 
     def add_keyword_at_end(self):
-        keyword = str(input('Keyword : '))
+        keyword = str(input("Keyword : "))
         try:
             for item in self.path.glob("*"):
                 src = str(item)
@@ -225,7 +226,7 @@ class rename_files:
                     continue
                 print(file_name)
                 # adding keyword at end
-                file_name_list = file_name.split('.')
+                file_name_list = file_name.split(".")
                 extenstion = file_name_list[-1]
                 file_name_list.pop(-1)
                 extenstion = keyword + "." + extenstion
@@ -243,11 +244,11 @@ class rename_files:
         except UserWarning:
             _ = input("Done")
         except Exception as e:
-            print(f'add_keyword_at_end :- {e}')
+            print(f"add_keyword_at_end :- {e}")
             raise UserWarning
 
     def add_keyword_at_front(self):
-        keyword = str(input('Keyword : '))
+        keyword = str(input("Keyword : "))
         try:
             for item in self.path.glob("*"):
                 src = str(item)
@@ -270,10 +271,10 @@ class rename_files:
         except UserWarning:
             _ = input("Done")
         except Exception as e:
-            print(f'add_keyword_at_end :- {e}')
+            print(f"add_keyword_at_end :- {e}")
             raise UserWarning
 
-    def list_file(self) :
+    def list_file(self):
         try:
             for item in self.path.glob("*"):
                 src = str(item)
@@ -283,7 +284,7 @@ class rename_files:
                     continue
                 print(file_name)
         except Exception as e:
-            print(f'list_files :- {e}')
+            print(f"list_files :- {e}")
 
 
 class_call_rename_files = rename_files()

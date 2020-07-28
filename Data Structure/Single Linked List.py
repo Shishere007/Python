@@ -54,9 +54,9 @@ class Single_Linked_List:
         last_node.next = new_node
 
     def insert_after_node(self, data: str, after: str) -> None:
-        '''
+        """
         Return after a speicif node
-        '''
+        """
         if self.__head == None:
             self.__add___head(data=data)
             return
@@ -125,7 +125,7 @@ class Single_Linked_List:
                 last_node = last_node.next
             print(nodes)
 
-    def get_list(self):
+    def get_list(self) -> node:
         return self.__head
 
 
