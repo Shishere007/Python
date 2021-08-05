@@ -52,8 +52,6 @@ import itertools
 def solve (N, A, K):
     if K-1 <= N:
         return 0
-    if K-1 <= N:
-        return 0
     res = {}
     for a in A:
         for b in A:
